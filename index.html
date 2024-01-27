@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Degree Video</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <script>
+      // Function to create meeting ID
+      function createMeeting() {
+            let meetingId =  'xxxxyxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+            console.log("http://"+ window.location.host + "?meetingId="+ meetingId)
+            document.getElementById("copyInput").value = "https://"+ window.location.host + "/meeting.html?meetingId="+ meetingId;
+      }
+
+      // Function to copy the link
+      function copyFunction() {
+        /* Get the text field */
+        var copyText = document.getElementById("copyInput");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+      }
+    </script>
+    <div>
+      <div class="p-5 h-20">
+        <img src="logo.png" class="w-40"/>
+      </div>
+      <div class="p-10">
+        <img src="hero.jpeg" class="w-full h-90 mb-4 rounded-lg"/>
+        <h1 class="font-bold tracking-tight text-4xl mb-2">The great video conferencing experience</h1>
+        <p class="mb-4 tracking-tight">Explore the great video conferencing web app that bring you a new experience in your meeting such as AI Noise Removal, Live Streams and others...</p>
+        <div class="-mb-4 flex grid sm:grid-cols-2 sm:justify-between sm:items-center sm:space-x-4">
+          <button class="py-2 px-10 text-white font-bold bg-black rounded-full" onclick="createMeeting()">Create Meeting</button>
+          <button class="mt-2 py-2 px-10 text-black font-bold bg-transparent border border-black rounded-full" onclick="copyFunction()">Copy Link</button>
+        </div>
+        <br/>
+        <input type="text" class="border border-black rounded-full py-2 px-4 w-full placeholder:text-slate-400" placeholder="Meeting link will be here..." id="copyInput">
+      </div>
+      <div class="h-10 bg-white inset-x-0 bottom-5">
+        <ul class="mb-4 justify-center h-10 items-center flex space-x-4 text-md inset-x-0 bottom-0">
+          <li><a href="#" class="focus:underline focus:bold hover:underline">Terms & Conditions</a></li>
+          <li><a href="#" class="focus:underline focus:bold hover:underline">Privacy Policy</a></li>
+          <li><a href="#" class="focus:underline focus:bold hover:underline">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    
+  </body>
+</html>
